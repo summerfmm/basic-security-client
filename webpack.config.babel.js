@@ -1,10 +1,28 @@
+/**
+ * webpack module 路径解析规则，即 import * from 'path' 中的 path 的解析规则
+ *
+ * webpack 路径分为三种： 绝对路径，相对路径，模块路径
+ *  import Default from '/home/kasei/Desktop/file'       # 绝对路径
+ *  import Default from './file'                         # 相对路径
+ *  import Default from '../file'                        # 相对路径
+ *  import Default from 'module/lib/file'                # 模块路径，即：不是 ., .., / 三个字符开头的路径都认为是 module path
+ *
+ *  模块路径根据 webpack.config.babel.js 中配置的 resolve 来解析
+ *
+ *
+ *
+ * */
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { VueLoaderPlugin } from 'vue-loader';
 
+/**
+ * __dirname: webpack.config.babel.js 所在的目录
+ * */
 export default {
+    context: path.resolve(__dirname, ''), // webpack 解析 入口点 和 加载模块文件 的 base directory
     entry: './src/index.js', // webpack 构建当前 module 依赖图谱的入口
     mode: 'development', // 开发模式 webpack 根据不同的模式做不同优化
     devtool: 'source-map', // 用于配置 source-map 文件生成规则
@@ -66,11 +84,22 @@ export default {
     ],
     // 配置 webpack 如何加载 module
     resolve: {
+        /* 给 import xxx from 'path' 中的 path 取别名
+         * 修改别名后，需要在 idea
+         *  File -> Settings -> Languages & Frameworks -> JavaScript -> Webpack
+         * 中配置 webpack.config.babel.js 的路径，否则别名会提示找不到路径
+         * */
         alias: {
+            /* 将 ./src 目录取别名为 srcDir 模块，
+             * 这样在 import src 目录下的文件时，可以使用模块路径，即：import Default from 'srcDir/...'
+             * 这样可以避免相对路径, 避免出现类似 ../../../file 形式的路径
+             * */
+            srcDir: path.resolve(__dirname, 'src/'),
             // 用于开启 vue 的运行时编译
             // vue: path.resolve(__dirname, 'node_modules/vue/dist/vue.esm-bundler.js')
             vue: '@vue/runtime-dom',
-        }
+
+        },
     },
     // 开发服务器
     devServer: {

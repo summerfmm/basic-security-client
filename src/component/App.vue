@@ -15,8 +15,8 @@
 <script>
     import * as Vue from 'vue';
     import * as Vuex from 'vuex';
-    import Menu from './Menu.vue';
-    import MainTabs from './MainTabs.vue';
+    import Menu from 'srcDir/component/Menu.vue';
+    import MainTabs from 'srcDir/component/MainTabs.vue';
 
     export default {
 

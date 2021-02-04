@@ -12,9 +12,9 @@
 <script>
     import * as Vue from 'vue';
     import * as Vuex from 'vuex';
-    import WelcomeTab from './WelcomeTab.vue';
-    import ActionTab from './ActionTab.vue';
-    import ResourceTab from './ResourceTab.vue';
+    import WelcomeTab from 'srcDir/component/WelcomeTab.vue';
+    import ActionTab from 'srcDir/component/ActionTab.vue';
+    import ResourceTab from 'srcDir/component/ResourceTab.vue';
 
     export default {
         setup(props, context){
@@ -24,10 +24,6 @@
                 label: 'Welcome',
                 tabComponentName: 'kh-welcome-tab'
             }]);
-
-
-
-
 
             function addTab(tabComponentName) {
                 // 如果存在相同的 tab name 那么直接跳转到该 tab
@@ -67,8 +63,8 @@
             }
 
             const store = Vuex.useStore();
-            Vue.watch(Vue.computed(() => store.state.currentTabComponentName ), (value, oldValue) => {
-                addTab(value);
+            Vue.watch(Vue.computed(() => store.state.tabComponentChangeTrigger ), (value, oldValue) => {
+                addTab(store.state.currentTabComponentName);
             });
             return {
                 // data

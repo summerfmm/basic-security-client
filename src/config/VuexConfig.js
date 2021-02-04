@@ -8,15 +8,16 @@ const mutationNames = {
 };
 const store = Vuex.createStore({
     state:() => ({
-        currentTabComponentName: 'Welcome'
+        currentTabComponentName: 'Welcome',
+        tabComponentChangeTrigger: false,
     }),
     mutations: {
         [mutationNames.changeTabComponentName](state, menuName) {
             state.currentTabComponentName = menuName;
+            state.tabComponentChangeTrigger = !state.tabComponentChangeTrigger;
         }
     }
 });
 
 /** export */
-console.log(mutationNames);
 export { mutationNames, store};

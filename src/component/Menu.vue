@@ -63,7 +63,7 @@
 <script>
     import * as Vue from 'vue';
     import { useStore } from 'vuex';
-    import * as VuexConfig from '../vuex/VuexConfig.js';
+    import * as VuexConfig from 'srcDir/config/VuexConfig.js';
 
     export default {
         setup(props, context){

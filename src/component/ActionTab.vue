@@ -21,8 +21,8 @@
 </template>
 
 <script>
-    import { ref, reactive } from 'vue';
-    import axios from 'axios';
+    import { ref, reactive, onBeforeMount } from 'vue';
+    import axios from 'srcDir/config/AxiosConfig';
 
 
     export default {
@@ -94,17 +94,20 @@
                 description: '查'
             }]);
 
+            function deleteRow(index, rows) {
+                rows.splice(index, 1);
+            }
+
+            onBeforeMount(() => {
+                // axios.get('').
+
+                console.log('Component is mounted!');
+            });
 
             return {
                 tableData,
+                deleteRow,
             };
-        },
-
-
-        methods: {
-            deleteRow(index, rows) {
-                rows.splice(index, 1);
-            }
         }
     }
 </script>
