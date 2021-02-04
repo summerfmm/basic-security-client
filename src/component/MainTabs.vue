@@ -1,6 +1,6 @@
 <template>
-    <el-tabs v-model="editableTabsName" type="card" closable @tab-remove="removeTab">
-        <el-tab-pane
+    <el-tabs v-model="editableTabsName" type="border-card" closable @tab-remove="removeTab" style="height: 100%;">
+        <el-tab-pane style="height: 100%;"
                 v-for="(item, index) in editableTabs"
                 :label="item.label"
                 :name="item.label">
@@ -89,3 +89,13 @@
         }
     }
 </script>
+
+<style>
+    .el-tabs__header.is-top {
+        height: 5%;
+    }
+
+    .el-tabs__content {
+        height: 95%;
+    }
+</style>

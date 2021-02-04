@@ -6,7 +6,7 @@
         @close="handleClose"
         :style="{ 'text-align': textAlign, 'overflow': 'auto'}"
         :collapse="isCollapse">
-        <el-menu-item index="1" @click="collapseHandler">
+        <el-menu-item index="Collapse" @click="collapseHandler">
             <i :class="[isCollapse ? 'el-icon-d-arrow-right' : 'el-icon-d-arrow-left']"></i>
         </el-menu-item>
         <el-menu-item index="Resource" @click="itemClick">
@@ -17,11 +17,11 @@
             <i class="el-icon-s-operation"></i>
             <span>Action</span>
         </el-menu-item>
-        <el-menu-item index="4">
+        <el-menu-item index="ResourceAction">
             <i class="el-icon-lock"></i>
             <span>ResourceAction</span>
         </el-menu-item>
-        <el-menu-item index="5">
+        <el-menu-item index="Role">
             <i class="el-icon-notebook-2"></i>
             <span>Role</span>
         </el-menu-item>
@@ -50,7 +50,7 @@
         </el-submenu>
 
 
-        <el-menu-item index="7">
+        <el-menu-item index="Group">
             <i class="el-icon-user-solid"></i>
             <span>Group</span>
         </el-menu-item>
@@ -103,7 +103,6 @@
 <style>
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 15%;
-        min-height: 200px;
     }
 </style>
 

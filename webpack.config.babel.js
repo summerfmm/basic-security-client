@@ -57,7 +57,7 @@ export default {
          * 所以如果是多页应用，则需要使用 multipage-webpack-plugin 替代 html-webpack-plugin
          * */
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './src/index.html'), // 配置动态添加 <script> 标签的 html 路径
+            template: path.resolve(__dirname, './src/index.html'), // 配置需要动态添加 <script> 标签的 html 路径
         }),
         /* 用于自动清理 dist 目录 */
         new CleanWebpackPlugin(),
